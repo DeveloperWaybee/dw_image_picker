@@ -1,46 +1,37 @@
 # Flutter Image Picker Plugin
 
-[![pub package](https://img.shields.io/pub/v/dw_image_picker.svg)](https://pub.dev/packages/dw_image_picker)
+The iOS implementation of [dw_image_picker](https://pub.dev/packages/dw_image_picker).
+
+---
+
+[![pub package](https://img.shields.io/pub/v/dw_image_picker_ios.svg)](https://pub.dev/packages/dw_image_picker_ios)
 [![pub package](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
-|             | Android | iOS   |
-| ----------- | ------- | ----- |
-| **Support** | SDK 21+ | 11.0+ |
+|             | iOS   |
+| ----------- | ----- |
+| **Support** | 11.0+ |
 
 Simplify media selection, cropping, and camera functionality in your Flutter app. Choose images/videos from the library, crop images, and capture new photos/videos with ease.
 
-## Features:
-
-- Select images/videos from the library
-- Take a photo or record a video
-- Open image cropper
-- Support crop multiple images
-- Support quality compression for selected images
-- Support gif selection
-
-| iOS                                                                                                                 | Android                                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/ios_picker_demo.gif?raw=true" width="160"> | <img src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/android_picker_sample.gif?raw=true" width="160"> |
+<p align="center">
+  <img
+      src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/ios_picker_demo.gif?raw=true"
+      alt="Picker iOS"
+      width="160"
+    />
+</p>
 
 ---
 
 ## Installation
 
 ```sh
-$ flutter pub add dw_image_picker
+$ flutter pub add dw_image_picker_ios
 ```
-
-> Note: If you are developing an application exclusively for either `Android` or `iOS`, you don't need to install `dw_image_picker`. Instead, you can choose one of the following packages based on your target platform:
->
-> - **iOS** - [dw_image_picker_ios](https://pub.dev/packages/dw_image_picker_ios)
-> - **Android** - [dw_image_picker_android](https://pub.dev/packages/dw_image_picker_android)
 
 ## Setup
 
 To use the plugin, you need to perform the following setup steps:
-
-<details>
-<summary>iOS</summary>
 
 1. Add `Privacy Description` to your `ios/Runner/Info.plist` file.
 
@@ -69,52 +60,14 @@ iOS 14 You can suppress the automatic prompting from the system by setting **PHP
 
 ![localize camera](https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/localize_camera.png?raw=true)
 
-</details>
-
-<details>
-<summary>Android</summary>
-
-1. Make sure you set the `minSdkVersion` in your `android/app/build.gradle` file from version 21 or later:
-
-```gradle
-android {
-    ...
-    defaultConfig {
-        minSdkVersion 21
-        ...
-    }
-}
-```
-
-2. Add permissions to your `AndroidManifest.xml` file.
-
-```xml
-<!-- Android 12 and lower -->
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-<!-- Targeting Android 13 or higher -->
-<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-
-<!-- Request the camera permission -->
-<uses-feature android:name="android.hardware.camera" android:required="false" />
-<uses-permission android:name="android.permission.CAMERA" />
-
-<!-- Add this permission if you need to record videos -->
-<uses-permission android:name="android.permission.RECORD_AUDIO" />
-```
-
-</details>
-
 ## Usage
 
 ### Select images/videos from library
 
 ```dart
-import 'package:dw_image_picker/dw_image_picker.dart';
+import 'package:dw_image_picker_ios/dw_image_picker_ios.dart';
 
-final _picker = DWImagePicker();
+final _picker = DWImagePickerIOS();
 
 List<DWPickerItem> _selectedImages = [];
 
@@ -142,9 +95,9 @@ _openPicker() async {
 ### Take a photo or record a video
 
 ```dart
-import 'package:dw_image_picker/dw_image_picker.dart';
+import 'package:dw_image_picker_ios/dw_image_picker_ios.dart';
 
-final _picker = DWImagePicker();
+final _picker = DWImagePickerIOS();
 
 DWPickerItem? _selectedImage;
 
@@ -170,9 +123,9 @@ _openCamera() async {
 ### Open image cropper
 
 ```dart
-import 'package:dw_image_picker/dw_image_picker.dart';
+import 'package:dw_image_picker_ios/dw_image_picker_ios.dart';
 
-final _picker = DWImagePicker();
+final _picker = DWImagePickerIOS();
 
 DWPickerItem? _selectedImage;
 
@@ -195,17 +148,9 @@ _openCropper_() async {
 | cropOptions | Configuration options for the cropping functionality | [DWCropOptions](#DWCropOptions)                 |
 | localized   | Custom text displayed for the plugin                 | [LocalizedImageCropper](#localizedimagecropper) |
 
-**Normal style**
-
-| iOS                                                                                                                 | Android                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/ios_crop_square.png?raw=true" width="160"> | <img src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/android_crop_square.png?raw=true" width="160"> |
-
-**Circular style**
-
-| iOS                                                                                                                   | Android                                                                                                                   |
-| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/ios_crop_circular.png?raw=true" width="160"> | <img src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/android_crop_circular.png?raw=true" width="160"> |
+| Normal                                                                                                              | Circular                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/ios_crop_square.png?raw=true" width="160"> | <img src="https://github.com/DeveloperWaybee/dw_image_picker/blob/main/__assets__/ios_crop_circular.png?raw=true" width="160"> |
 
 ---
 
@@ -219,8 +164,8 @@ _openCropper_() async {
 | maxFileSize              | The maximum allowed file size (in KB) for selected items.                                 |                    |
 | minFileSize              | The minimum allowed file size (in KB) for selected items.                                 |                    |
 | enablePreview            | Enables or disables the preview feature. (**Press** on Android and **Long Press** on iOS) | false              |
-| convertHeicToJPG         | Converts HEIC format images to JPEG format when selected. (iOS Only)                      | false              |
-| convertLivePhotosToJPG   | Converts Live Photos to JPEG format when selected. (iOS Only)                             | true               |
+| convertHeicToJPG         | Converts HEIC format images to JPEG format when selected.                                 | false              |
+| convertLivePhotosToJPG   | Converts Live Photos to JPEG format when selected.                                        | true               |
 | isExportThumbnail        | Determines whether to export thumbnail for selected videos.                               | false              |
 | thumbnailCompressQuality | The compression quality (0.1-1) for exported thumbnails.                                  | 0.9                |
 | thumbnailCompressFormat  | The image format for exported thumbnails: `CompressFormat.jpg`, `CompressFormat.png`.     | CompressFormat.jpg |
@@ -228,7 +173,7 @@ _openCropper_() async {
 | minDuration              | The minimum duration (in seconds) for selected videos.                                    |                    |
 | numberOfColumn           | The number of items displayed per row in the picker list.                                 | 3                  |
 | usedCameraButton         | Determines whether to show the camera button in the picker list.                          | true               |
-| isGif                    | Enable gif selection                                                                      | false              |
+| isGif                    | Support gif selection.                                                                    | false              |
 | compressQuality          | Compress images with custom quality                                                       |                    |
 | compressFormat           | The image format for compressed images                                                    | CompressFormat.jpg |
 | maxSizeOutput            | Sets the maximum width and maximum height for selected images.                            |                    |
@@ -290,32 +235,21 @@ _openCropper_() async {
 | cancelText                  | The text displayed on the "Cancel" button.                                             | Cancel                                      |
 | loadingText                 | The text displayed when the picker is in a loading state.                              | Loading                                     |
 | defaultAlbumName            | The name for default album.                                                            | Recents                                     |
-| tapHereToChangeText         | The text displayed below `defaultAlbumName`. (iOS Only)                                | Tap here to change                          |
+| tapHereToChangeText         | The text displayed below `defaultAlbumName`.                                           | Tap here to change                          |
 | okText                      | The text displayed on the "OK" button.                                                 | OK                                          |
-| emptyMediaText              | The text displayed when no media is available. (iOS Only)                              | No media available                          |
-| cropDoneText                | The text displayed on the "Done" button. (iOS Only)                                    | Done                                        |
-| cropCancelText              | The text displayed on the "Cancel" button. (iOS Only)                                  | Cancel                                      |
+| emptyMediaText              | The text displayed when no media is available.                                         | No media available                          |
+| cropDoneText                | The text displayed on the "Done" button.                                               | Done                                        |
+| cropCancelText              | The text displayed on the "Cancel" button.                                             | Cancel                                      |
 | cropTitleText               | The title displayed in the crop image screen.                                          |                                             |
 
 ### LocalizedImageCropper
 
-| Property       | Description                                           | Default |
-| -------------- | ----------------------------------------------------- | ------- |
-| cropDoneText   | The text displayed on the "Done" button. (iOS Only)   | Done    |
-| cropCancelText | The text displayed on the "Cancel" button. (iOS Only) | Cancel  |
-| cropTitleText  | The title displayed in the crop image screen.         |         |
-
-## ProGuard
-
-```
--keep class com.luck.picture.lib.** { *; }
--dontwarn com.yalantis.ucrop**
--keep class com.yalantis.ucrop** { *; }
--keep interface com.yalantis.ucrop** { *; }
-```
+| Property       | Description                                   | Default |
+| -------------- | --------------------------------------------- | ------- |
+| cropDoneText   | The text displayed on the "Done" button.      | Done    |
+| cropCancelText | The text displayed on the "Cancel" button.    | Cancel  |
+| cropTitleText  | The title displayed in the crop image screen. |         |
 
 ## Open-source library
 
-iOS: [TLPhotoPicker](https://github.com/tilltue/TLPhotoPicker) and [TOCropViewController](https://github.com/TimOliver/TOCropViewController)
-
-Android: [PictureSelector](https://github.com/LuckSiege/PictureSelector)
+[TLPhotoPicker](https://github.com/tilltue/TLPhotoPicker) and [TOCropViewController](https://github.com/TimOliver/TOCropViewController)

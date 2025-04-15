@@ -160,12 +160,12 @@ _openCamera() async {
 
 **Properties**
 
-| Property      | Description                                          | Type                                            |
-| ------------- | ---------------------------------------------------- | ----------------------------------------------- |
-| cameraOptions | Additional options for the camera functionality      | [DWCameraOptions](#DWCameraOptions)             |
-| cropping      | Indicating whether or not cropping is enabled        | bool                                            |
-| cropOptions   | Configuration options for the cropping functionality | [DWCropOptions](#DWCropOptions)                 |
-| localized     | Custom text displayed for the plugin                 | [LocalizedImageCropper](#localizedimagecropper) |
+| Property      | Description                                                                                  | Type                                            |
+| ------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| cameraOptions | Additional options for the camera functionality                                              | [DWCameraOptions](#DWCameraOptions)             |
+| cropping      | Indicating whether or not cropping is enabled Just work when `cameraType = CameraType.image` | bool                                            |
+| cropOptions   | Configuration options for the cropping functionality                                         | [DWCropOptions](#DWCropOptions)                 |
+| localized     | Custom text displayed for the plugin                                                         | [LocalizedImageCropper](#localizedimagecropper) |
 
 ### Open image cropper
 
