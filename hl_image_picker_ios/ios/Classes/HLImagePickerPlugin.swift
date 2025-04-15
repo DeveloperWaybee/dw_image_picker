@@ -1,7 +1,7 @@
 import Flutter
 import Photos
 import UIKit
-import TLPhotoPicker
+import DW_TLPhotoPicker
 import CropViewController
 import MobileCoreServices
 
