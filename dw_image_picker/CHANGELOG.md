@@ -1,4 +1,4 @@
-## 1.2.16
+## 1.2.17
 
 * "Cannot find 'TARGET_OS_SIMULATOR' in scope" Fixed
 
