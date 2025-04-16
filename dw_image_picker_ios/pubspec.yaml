@@ -3,7 +3,7 @@ description: iOS implementation of the dw_image_picker plugin.
 repository: https://github.com/DeveloperWaybee/dw_image_picker/tree/main/dw_image_picker_ios
 issue_tracker: https://github.com/DeveloperWaybee/dw_image_picker/issues
 
-version: 1.0.0
+version: 1.0.5
 
 environment:
   sdk: ">=2.18.0 <4.0.0"

@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'dw_image_picker_ios'
-  s.version          = '1.0.0'
+  s.version          = '1.0.5'
   s.summary          = 'Choose images/videos from the library, crop images, and capture new photos/videos with ease.'
   s.description      = <<-DESC
 Choose images/videos from the library, crop images, and capture new photos/videos with ease.
@@ -15,7 +15,7 @@ Choose images/videos from the library, crop images, and capture new photos/video
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'DW_TLPhotoPicker'
+  s.dependency 'DW_TLPhotoPicker', '>= 1.0.5'
   s.dependency 'CropViewController'
   s.platform = :ios, '11.0'
 

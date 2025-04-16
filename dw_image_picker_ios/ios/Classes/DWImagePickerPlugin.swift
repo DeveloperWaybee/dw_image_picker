@@ -11,7 +11,7 @@ enum PickerType {
     case cropper
 }
 
-public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewControllerDelegate, CropViewControllerDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+public class DWImagePickerPlugin: NSObject, FlutterPlugin, DW_TLPhotosPickerViewControllerDelegate, CropViewControllerDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "dw_image_picker", binaryMessenger: registrar.messenger())
         let instance = DWImagePickerPlugin()
@@ -23,8 +23,8 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewCon
     var result: FlutterResult? = nil
     var croppedImages: [[String : Any]] = []
     
-    var configure = TLPhotosPickerConfigure()
-    var selectedAssets = [TLPHAsset]()
+    var configure = DW_TLPhotosPickerConfigure()
+    var selectedAssets = [DW_TLPHAsset]()
     var pickerType: PickerType? = nil
     
     
@@ -155,10 +155,10 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewCon
         self.result!(FlutterError(code: "CANCELED", message: "User has canceled the camera", details: nil))
     }
     
-    // MARK: TLPhotoPicker
+    // MARK: DW_TLPhotoPicker
     
     private func initConfig() {
-        configure = TLPhotosPickerConfigure()
+        configure = DW_TLPhotosPickerConfigure()
         switch arguments?["mediaType"] as? String {
         case "video":
             configure.mediaType = .video
@@ -189,11 +189,11 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewCon
         configure.tapHereToChange = uiStyle?["tapHereToChangeText"] as? String ?? "Tap here to change"
         configure.emptyMessage = uiStyle?["emptyMediaText"] as? String ?? "No media available"
         
-        var newAssets = [TLPHAsset]()
+        var newAssets = [DW_TLPHAsset]()
         if let selecteds = arguments?["selectedIds"] as? NSArray {
             for index in 0..<selecteds.count {
                 let assetId = selecteds[index] as! String
-                var TLAsset = TLPHAsset.asset(with: assetId)
+                var TLAsset = DW_TLPHAsset.asset(with: assetId)
                 TLAsset?.selectedOrder = index + 1
                 newAssets.insert(TLAsset!, at: index)
             }
@@ -202,7 +202,7 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewCon
     }
     
     private func openPicker() {
-        let picker = TLPhotosPickerViewController()
+        let picker = DW_TLPhotosPickerViewController()
         picker.delegate = self
         picker.configure = configure
         picker.selectedAssets = self.selectedAssets
@@ -211,11 +211,11 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewCon
         }
     }
     
-    public func shouldDismissPhotoPicker(withTLPHAssets: [TLPHAsset]) -> Bool {
+    public func shouldDismissPhotoPicker(withTLPHAssets: [DW_TLPHAsset]) -> Bool {
         return false
     }
     
-    public func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
+    public func dismissPhotoPicker(withTLPHAssets: [DW_TLPHAsset]) {
         if let minSelectedAssets = arguments?["minSelectedAssets"] as? Int, withTLPHAssets.count < minSelectedAssets {
             showAlert(message: "minSelectedAssetsErrorText", defaultText: "Need to select at least \(minSelectedAssets)")
             return;
@@ -279,7 +279,7 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewCon
         }
     }
     
-    private func processAssetForCropping(assets: [TLPHAsset]) {
+    private func processAssetForCropping(assets: [DW_TLPHAsset]) {
         if let asset = assets.first, let image = asset.fullResolutionImage {
             self.selectedAssets = Array(assets.dropFirst())
             openCropper(image: image)
@@ -331,17 +331,17 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewCon
         self.result!(FlutterError(code: "CANCELED", message: "User has canceled the picker", details: nil))
     }
     
-    public func handleNoAlbumPermissions(picker: TLPhotosPickerViewController) {
+    public func handleNoAlbumPermissions(picker: DW_TLPhotosPickerViewController) {
         picker.dismiss(animated: true) {
             self.showAlert(message: "noAlbumPermissionText", defaultText: "No permission to access album")
         }
     }
     
-    public func handleNoCameraPermissions(picker: TLPhotosPickerViewController) {
+    public func handleNoCameraPermissions(picker: DW_TLPhotosPickerViewController) {
         showAlert(message: "noCameraPermissionText", defaultText: "No permission to access camera")
     }
     
-    public func didExceedMaximumNumberOfSelection(picker: TLPhotosPickerViewController) {
+    public func didExceedMaximumNumberOfSelection(picker: DW_TLPhotosPickerViewController) {
         showAlert(message: "maxSelectedAssetsErrorText", defaultText: "Exceeded maximum number of selected items")
     }
     
@@ -355,7 +355,7 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, TLPhotosPickerViewCon
         return Double(sizeOnDisk / 1024)
     }
     
-    private func buildResponse(path: URL, withType type: String, withAsset asset: TLPHAsset ) -> [String : Any] {
+    private func buildResponse(path: URL, withType type: String, withAsset asset: DW_TLPHAsset ) -> [String : Any] {
         let phAsset = asset.phAsset
         var media = [
             "path": path.absoluteString.replacingOccurrences(of: "file://", with: ""),
