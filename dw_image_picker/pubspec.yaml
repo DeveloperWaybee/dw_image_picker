@@ -3,7 +3,7 @@ description: Choose images/videos from the library, crop images, and capture new
 repository: https://github.com/DeveloperWaybee/dw_image_picker/tree/main/dw_image_picker
 issue_tracker: https://github.com/DeveloperWaybee/dw_image_picker/issues
 
-version: 1.0.0
+version: 1.0.0+1
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
