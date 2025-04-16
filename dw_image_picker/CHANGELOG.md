@@ -1,5 +1,9 @@
 ## 1.2.16
 
+* "Cannot find 'TARGET_OS_SIMULATOR' in scope" Fixed
+
+## 1.2.16
+
 * can't interact with the screen when onPress backHandler #31
 
 ## 1.2.15
