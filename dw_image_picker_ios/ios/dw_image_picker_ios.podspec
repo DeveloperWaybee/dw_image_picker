@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'dw_image_picker_ios'
-  s.version          = '1.0.5'
+  s.version          = '1.2.10'
   s.summary          = 'Choose images/videos from the library, crop images, and capture new photos/videos with ease.'
   s.description      = <<-DESC
 Choose images/videos from the library, crop images, and capture new photos/videos with ease.
