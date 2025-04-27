@@ -2,6 +2,7 @@ name: dw_image_picker_android
 description: Android implementation of the dw_image_picker plugin.
 repository: https://github.com/DeveloperWaybee/dw_image_picker/tree/main/dw_image_picker_android
 issue_tracker: https://github.com/DeveloperWaybee/dw_image_picker/issues
+homepage: https://waybeetech.com/
 
 version: 1.2.11
 

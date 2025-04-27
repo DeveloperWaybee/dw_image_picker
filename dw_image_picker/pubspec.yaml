@@ -2,6 +2,7 @@ name: dw_image_picker
 description: Choose images/videos from the library, crop images, and capture new photos/videos with ease.
 repository: https://github.com/DeveloperWaybee/dw_image_picker/tree/main/dw_image_picker
 issue_tracker: https://github.com/DeveloperWaybee/dw_image_picker/issues
+homepage: https://waybeetech.com/
 
 version: 1.2.17
 
