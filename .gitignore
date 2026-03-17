@@ -31,3 +31,6 @@ migrate_working_dir/
 build/
 scripts/
 .vscode/
+
+# FVM Version Cache
+.fvm/
