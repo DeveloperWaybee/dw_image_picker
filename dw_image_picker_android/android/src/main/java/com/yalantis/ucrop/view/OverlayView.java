@@ -22,7 +22,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
-import com.waybee.dw_image_picker.R;;
+import com.waybee.dw_image_picker.R;
 import com.yalantis.ucrop.callback.OverlayViewChangeListener;
 import com.yalantis.ucrop.util.DensityUtil;
 import com.yalantis.ucrop.util.RectUtils;

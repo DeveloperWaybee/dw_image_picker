@@ -13,7 +13,7 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.core.content.ContextCompat;
 
-import com.waybee.dw_image_picker.R;;
+import com.waybee.dw_image_picker.R;
 
 /**
  * Created by Oleksii Shliama (https://github.com/shliama).

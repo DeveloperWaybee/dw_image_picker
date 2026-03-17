@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
-import com.waybee.dw_image_picker.R;;
+import com.waybee.dw_image_picker.R;
 import com.yalantis.ucrop.callback.CropBoundsChangeListener;
 import com.yalantis.ucrop.callback.OverlayViewChangeListener;
 
