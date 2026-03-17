@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Android Warning Fixes
+
 ## 1.2.17
 
 * "Cannot find 'TARGET_OS_SIMULATOR' in scope" Fixed
