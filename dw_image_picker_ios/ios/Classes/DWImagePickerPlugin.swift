@@ -262,6 +262,11 @@ public class DWImagePickerPlugin: NSObject, FlutterPlugin, DW_TLPhotosPickerView
                         group.leave();
                     })
                     if result == nil {
+                        if let uiImage = asset.fullResolutionImage,
+                           let imageInfo = DWImagePickerUtils.copyImage(uiImage, quality: compressQuality, format: compressFormat, id: asset.phAsset?.localIdentifier) {
+                            let media = NSDictionary(dictionary: imageInfo)
+                            data.append(media)
+                        }
                         group.leave();
                     }
                 }
